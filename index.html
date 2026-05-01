@@ -665,6 +665,135 @@
     content: '🔍 Diagrama expandido en pantalla completa';
   }
 
+  /* ---------- MODAL INFORMATIVO (tipos de SAF) ---------- */
+  .info-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 15, 9, 0.92);
+    backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  .info-modal.open { display: flex; opacity: 1; }
+  .info-modal-content {
+    width: min(900px, 96vw);
+    max-height: 88vh;
+    background:
+      radial-gradient(ellipse at top, rgba(199,226,106,0.08), transparent 60%),
+      linear-gradient(160deg, var(--panel), var(--bg-2));
+    border: 1px solid var(--accent-3);
+    border-radius: 6px;
+    padding: 28px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 0 80px rgba(199,226,106,0.22), 0 30px 60px rgba(0,0,0,0.6);
+    transform: scale(0.92);
+    transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1);
+    overflow: hidden;
+  }
+  .info-modal.open .info-modal-content { transform: scale(1); }
+  .info-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .info-modal-title-wrap { display: flex; align-items: center; gap: 14px; }
+  .info-modal-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    color: var(--accent);
+    filter: drop-shadow(0 0 12px rgba(199,226,106,0.5));
+    flex-shrink: 0;
+  }
+  .info-modal-title {
+    color: var(--accent);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(199,226,106,0.3);
+  }
+  .info-modal-close {
+    background: rgba(199,226,106,0.1);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-modal-close:hover {
+    background: var(--accent);
+    color: var(--bg);
+    transform: rotate(90deg) scale(1.1);
+  }
+  .info-modal-body {
+    overflow-y: auto;
+    padding-right: 8px;
+    color: var(--text);
+  }
+  .info-modal-body::-webkit-scrollbar { width: 8px; }
+  .info-modal-body::-webkit-scrollbar-track { background: var(--bg-2); border-radius: 4px; }
+  .info-modal-body::-webkit-scrollbar-thumb { background: var(--accent-3); border-radius: 4px; }
+  .info-modal-body p { color: var(--text); margin-bottom: 14px; }
+  .info-modal-body h4 {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin: 18px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-modal-body h4 .icon {
+    color: var(--accent-2);
+    width: 1.1em;
+    height: 1.1em;
+  }
+  .info-modal-body ul { margin: 8px 0 14px 22px; }
+  .info-modal-body li { margin-bottom: 6px; }
+  .info-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 14px;
+  }
+  .info-tag {
+    background: rgba(199,226,106,0.1);
+    border: 1px solid var(--accent-3);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+  .info-callout {
+    background: linear-gradient(135deg, rgba(230,184,74,0.12), rgba(230,184,74,0.04));
+    border: 1px solid rgba(230,184,74,0.3);
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px;
+    margin: 14px 0;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .info-callout strong { color: var(--gold); }
+
   /* ---------- MODAL DIAGRAMA ---------- */
   .diag-modal {
     position: fixed;
@@ -819,6 +948,15 @@
     </symbol>
     <symbol id="ic-scroll" viewBox="0 0 48 48">
       <path fill="currentColor" d="M10 4c-3 0-6 3-6 6v28c0 3 3 6 6 6h28c3 0 6-3 6-6V10c0-3-3-6-6-6zm2 10h24v4H12zm0 8h24v4H12zm0 8h18v4H12z"/>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 48 48">
+      <path fill="currentColor" d="M6 8c-2 0-4 2-4 4v24c0 2 2 4 4 4h36c2 0 4-2 4-4V12c0-2-2-4-4-4zm2 4l16 12 16-12zM6 14l18 14L42 14v22H6z"/>
+    </symbol>
+    <symbol id="ic-book" viewBox="0 0 48 48">
+      <path fill="currentColor" d="M8 4c-2 0-4 2-4 4v32c0 2 2 4 4 4h32V4zm4 6h22v4H12zm0 8h22v4H12zm0 8h22v4H12z"/>
+    </symbol>
+    <symbol id="ic-user" viewBox="0 0 48 48">
+      <path fill="currentColor" d="M24 6a9 9 0 100 18 9 9 0 000-18zM8 44v-2c0-7 7-12 16-12s16 5 16 12v2z"/>
     </symbol>
     <symbol id="ic-grid" viewBox="0 0 48 48">
       <path fill="currentColor" d="M4 4h18v18H4zm22 0h18v18H26zM4 26h18v18H4zm22 0h18v18H26z"/>
@@ -1283,6 +1421,20 @@
   </div>
   <p>P&aacute;gina informativa sobre Sistemas Agroforestales &copy; 2026</p>
 </footer>
+
+<!-- ========== MODAL INFORMATIVO (tipos de SAF) ========== -->
+<div class="info-modal" id="infoModal" aria-hidden="true">
+  <div class="info-modal-content">
+    <div class="info-modal-header">
+      <div class="info-modal-title-wrap">
+        <svg class="info-modal-icon" id="infoModalIcon"><use href="#ic-tree"/></svg>
+        <h3 class="info-modal-title" id="infoModalTitle">Tipo de SAF</h3>
+      </div>
+      <button class="info-modal-close" id="infoModalClose" aria-label="Cerrar">&#x2715;</button>
+    </div>
+    <div class="info-modal-body" id="infoModalBody"></div>
+  </div>
+</div>
 
 <!-- ========== MODAL DIAGRAMA ========== -->
 <div class="diag-modal" id="diagModal" aria-hidden="true">
@@ -2368,6 +2520,291 @@ makeDiagram('diag-strata', (scene, camera) => {
   };
 });
 
+/* =========================================================
+   MODAL INFORMATIVO de TIPOS DE SAF
+   ========================================================= */
+(function setupInfoModal() {
+  const tiposData = {
+    'Agrosilvícolas': {
+      icon: 'ic-wheat',
+      intro: 'Los <strong>sistemas agrosilvícolas</strong> alternan árboles y cultivos agrícolas (anuales o perennes) en la misma unidad de tierra. Es la forma más extendida de agroforestería en Latinoamérica.',
+      sections: [
+        {
+          title: 'Características principales',
+          icon: 'ic-leaf',
+          list: [
+            'Los árboles aportan sombra, abono verde y fijación de nitrógeno.',
+            'Los cultivos generan ingresos a corto y medio plazo.',
+            'Pueden organizarse de forma asociada (mismo espacio) o en franjas (cultivos en callejones).',
+            'Compatibles con sistemas Taungya: cultivar mientras se establece una plantación forestal.'
+          ]
+        },
+        {
+          title: 'Ejemplos clásicos',
+          icon: 'ic-forest',
+          list: [
+            '<strong>Café bajo sombra</strong> con <em>Inga edulis</em>, <em>Erythrina poeppigiana</em> o aguacate.',
+            '<strong>Cacao + maderables</strong>: <em>Cordia alliodora</em>, <em>Cedrela odorata</em>.',
+            '<strong>Cultivos en callejones</strong> con <em>Leucaena leucocephala</em>.',
+            'Sistemas con cardamomo, té o pimienta como cultivo perenne y árboles tutores.'
+          ]
+        },
+        {
+          title: 'Especies de árboles recomendadas',
+          tags: ['Inga edulis', 'Cordia alliodora', 'Cedrela odorata', 'Gmelina arborea', 'Leucaena leucocephala', 'Tabebuia donnell-smithii']
+        }
+      ],
+      callout: '<strong>Ventaja clave:</strong> reducen drásticamente el costo en agroquímicos y mantienen la productividad del suelo a largo plazo.'
+    },
+
+    'Silvopastoriles': {
+      icon: 'ic-cow',
+      intro: 'Los <strong>sistemas silvopastoriles</strong> son asociaciones de árboles maderables o frutales con animales (con o sin cultivos). Optimizan la producción pecuaria y mejoran la calidad del alimento del ganado.',
+      sections: [
+        {
+          title: 'Modalidades',
+          icon: 'ic-forest',
+          list: [
+            '<strong>Árboles dispersos en pastizales:</strong> ganadería como objetivo principal; los árboles dan sombra y refugio.',
+            '<strong>Pastoreo en plantaciones forestales:</strong> los animales controlan malezas mientras crecen los árboles.',
+            '<strong>Bancos de proteína:</strong> áreas densas de leguminosas arbóreas para forraje de alta calidad.',
+            '<strong>Cercas vivas combinadas con pastoreo:</strong> delimitan potreros y proveen forraje extra.'
+          ]
+        },
+        {
+          title: 'Interacciones entre componentes',
+          icon: 'ic-cycle',
+          list: [
+            'Los árboles dan sombra → reducen estrés térmico del ganado → mejor producción.',
+            'Las preferencias del ganado afectan la composición vegetal del bosque.',
+            'Los animales dispersan semillas y favorecen la germinación.',
+            'Cuidado: alta carga animal puede compactar el suelo y dañar raíces.'
+          ]
+        },
+        {
+          title: 'Especies recomendadas',
+          tags: ['Acacia mangium', 'Leucaena leucocephala', 'Gliricidia sepium', 'Cordia alliodora', 'Cedrela odorata', 'Tectona grandis', 'Eucalyptus spp.']
+        }
+      ],
+      callout: '<strong>Bancos de proteína:</strong> son la herramienta estrella en zonas ganaderas. Mejoran la disponibilidad de forraje en la época seca y restauran la fertilidad del suelo.'
+    },
+
+    'Agrosilvopastoriles': {
+      icon: 'ic-leaf',
+      intro: 'Los <strong>sistemas agrosilvopastoriles</strong> son la integración total: árboles + cultivos + animales en una misma unidad de tierra. Logran la máxima diversificación productiva y resiliencia ambiental.',
+      sections: [
+        {
+          title: '¿Por qué son los más completos?',
+          icon: 'ic-layers',
+          list: [
+            'Aprovechan los <strong>tres componentes</strong> productivos a la vez.',
+            'Cierran los ciclos de nutrientes dentro de la propia parcela.',
+            'Diversifican ingresos: diarios (huevos, leche), mensuales (cultivos), anuales (ganado), a largo plazo (madera).',
+            'Optimizan el uso vertical del espacio (estratos: dosel, sotobosque, cultivos, pastos).'
+          ]
+        },
+        {
+          title: 'Ejemplos en la práctica',
+          icon: 'ic-forest',
+          list: [
+            '<strong>Café con sombra + animales menores</strong> (gallinas, cerdos): cafetales bajo Inga con huertos familiares.',
+            '<strong>Silvopastoril intensivo + cultivos forrajeros:</strong> Leucaena, pasturas mejoradas y rotación de ganado.',
+            '<strong>Milpa con árboles frutales y aves:</strong> maíz-frijol-calabaza con cacao, aguacate y gallinas.',
+            '<strong>Sistemas andinos:</strong> papa, quinua y maíz con aliso (<em>Alnus acuminata</em>) y ovinos.'
+          ]
+        },
+        {
+          title: 'Beneficios destacados',
+          icon: 'ic-sparkle',
+          list: [
+            'Hasta <strong>60% más</strong> captura de carbono que un monocultivo equivalente.',
+            'Reducción del <strong>40%</strong> en uso de fertilizantes sintéticos.',
+            'Hasta <strong>3 veces</strong> más ingresos por hectárea, distribuidos durante el año.',
+            'Restauración acelerada de tierras degradadas.'
+          ]
+        }
+      ],
+      callout: '<strong>Producir conservando, conservar produciendo:</strong> es el sistema más complejo de manejar pero el que mejor responde a los retos del campo moderno.'
+    },
+
+    'Cercas vivas': {
+      icon: 'ic-forest',
+      intro: 'Las <strong>cercas vivas</strong> son hileras de árboles y arbustos plantados para delimitar potreros, parcelas o linderos. Sustituyen total o parcialmente las cercas de alambre tradicionales.',
+      sections: [
+        {
+          title: 'Funciones múltiples',
+          icon: 'ic-leaf',
+          list: [
+            '<strong>Delimitación física</strong> de parcelas y potreros.',
+            '<strong>Protección contra el viento</strong> (cortina perimetral).',
+            'Provisión de <strong>forraje, leña, postes, frutas y madera</strong> complementaria.',
+            'Refugio para <strong>biodiversidad</strong> y conectividad ecológica del paisaje.'
+          ]
+        },
+        {
+          title: 'Ventajas frente a cercas muertas',
+          icon: 'ic-money',
+          list: [
+            'Costos más bajos a largo plazo: una vez establecidas, casi no requieren mantenimiento.',
+            'Duran décadas (las de alambre se oxidan en años).',
+            'Generan productos adicionales (forraje, leña, frutas).',
+            'Reducen la presión sobre el bosque por la búsqueda de postes.'
+          ]
+        },
+        {
+          title: 'Especies usadas en Veracruz, México',
+          tags: ['Gliricidia sepium', 'Bursera simaruba', 'Erythrina', 'Spondias mombin', 'Tabebuia rosea', 'Pachira aquatica', 'Leucaena spp.', 'Acacia farnesiana', 'Cordia alliodora']
+        }
+      ],
+      callout: '<strong>Manejo:</strong> requieren podas periódicas y reemplazo de árboles viejos o enfermos. Bien manejadas, son una inversión a muy largo plazo.'
+    },
+
+    'Huertos familiares': {
+      icon: 'ic-house',
+      intro: 'Los <strong>huertos caseros mixtos</strong> son pequeñas áreas alrededor de la vivienda con una enorme diversidad de especies vegetales y animales. Son plantados y mantenidos por la familia para autoconsumo.',
+      sections: [
+        {
+          title: 'Características distintivas',
+          icon: 'ic-layers',
+          list: [
+            'Sistema de <strong>múltiples estratos</strong>: árboles altos, frutales medios, arbustos, hortalizas y plantas rastreras.',
+            'Combinan árboles, arbustos, bejucos, cultivos perennes y anuales.',
+            'Incluyen <strong>animales menores</strong>: gallinas, cerdos, conejos.',
+            'Distancia entre plantas: 4 a 6 metros (irregular y orgánica).'
+          ]
+        },
+        {
+          title: 'Componentes típicos',
+          icon: 'ic-forest',
+          list: [
+            '<strong>Frutales:</strong> mango, papaya, plátano, cítricos, aguacate, guayaba.',
+            '<strong>Maderables:</strong> cedro, caoba, melina (para uso futuro).',
+            '<strong>Hortalizas y medicinales:</strong> chile, tomate, cilantro, hierbas.',
+            '<strong>Animales:</strong> gallinas, cerdos, abejas para miel.'
+          ]
+        },
+        {
+          title: 'Valor cultural y social',
+          icon: 'ic-users',
+          list: [
+            'Son una <strong>huella cultural</strong>: registran saberes, especies tradicionales y manejo agrozootécnico.',
+            'Aseguran la <strong>seguridad alimentaria</strong> y dieta balanceada de la familia.',
+            'Refugio para fauna silvestre y polinizadores.',
+            'Conservan <strong>diversidad genética</strong> (variedades locales).'
+          ]
+        }
+      ],
+      callout: '<strong>Dato FAO:</strong> los alimentos provenientes de huertos familiares son un dispositivo de seguridad alimentaria que complementa los productos básicos del mercado.'
+    },
+
+    'Barbechos mejorados': {
+      icon: 'ic-cycle',
+      intro: 'Los <strong>barbechos mejorados</strong> son sistemas <em>secuenciales</em> donde se plantan árboles fijadores de nitrógeno durante la fase de descanso de la tierra, para acelerar la recuperación de la fertilidad del suelo.',
+      sections: [
+        {
+          title: '¿Cómo funcionan?',
+          icon: 'ic-cycle',
+          list: [
+            'Tras 2–3 años de cultivo, el suelo se empobrece y baja la productividad.',
+            'En vez de dejar la tierra en descanso natural (15–20 años), se siembran árboles fijadores de N.',
+            'Estos árboles aceleran la recuperación: el barbecho se reduce a <strong>3–5 años</strong>.',
+            'Al final del barbecho, los árboles aportan leña, forraje y abono verde.'
+          ]
+        },
+        {
+          title: 'Beneficios principales',
+          icon: 'ic-sparkle',
+          list: [
+            '<strong>Recuperan fertilidad</strong> mucho más rápido que el barbecho natural.',
+            'Generan productos durante el descanso (leña, postes, forraje).',
+            'Mejoran la <strong>estructura del suelo</strong> y aumentan materia orgánica.',
+            'Reducen la presión por colonizar nuevas tierras (frenan deforestación).'
+          ]
+        },
+        {
+          title: 'Especies fijadoras de nitrógeno',
+          tags: ['Leucaena leucocephala', 'Inga edulis', 'Calliandra calothyrsus', 'Erythrina poeppigiana', 'Gliricidia sepium', 'Acacia mangium']
+        }
+      ],
+      callout: '<strong>Sistema secuencial:</strong> a diferencia de los SAF simultáneos, aquí los árboles y los cultivos se alternan en el tiempo, no comparten el espacio al mismo tiempo.'
+    }
+  };
+
+  const modal = document.getElementById('infoModal');
+  const titleEl = document.getElementById('infoModalTitle');
+  const iconEl = document.getElementById('infoModalIcon');
+  const bodyEl = document.getElementById('infoModalBody');
+  const closeBtn = document.getElementById('infoModalClose');
+
+  function renderSection(sec) {
+    let html = `<h4>`;
+    if (sec.icon) html += `<svg class="icon"><use href="#${sec.icon}"/></svg>`;
+    html += `${sec.title}</h4>`;
+    if (sec.list) {
+      html += '<ul>';
+      sec.list.forEach(li => { html += `<li>${li}</li>`; });
+      html += '</ul>';
+    }
+    if (sec.tags) {
+      html += '<div class="info-tags">';
+      sec.tags.forEach(t => { html += `<span class="info-tag">${t}</span>`; });
+      html += '</div>';
+    }
+    return html;
+  }
+
+  function openInfo(name) {
+    const data = tiposData[name];
+    if (!data) return;
+    titleEl.textContent = name;
+    iconEl.innerHTML = `<use href="#${data.icon}"/>`;
+
+    let html = `<p>${data.intro}</p>`;
+    data.sections.forEach(s => { html += renderSection(s); });
+    if (data.callout) {
+      html += `<div class="info-callout">${data.callout}</div>`;
+    }
+    bodyEl.innerHTML = html;
+    bodyEl.scrollTop = 0;
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    anime({
+      targets: '.info-modal-body > *',
+      opacity: [0, 1],
+      translateY: [12, 0],
+      duration: 500,
+      delay: anime.stagger(60, { start: 100 }),
+      easing: 'easeOutCubic'
+    });
+  }
+
+  function closeInfo() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Conectar las cards de la sección "Tipos"
+  const tiposSection = document.getElementById('tipos');
+  if (tiposSection) {
+    tiposSection.querySelectorAll('.card').forEach(card => {
+      const titleNode = card.querySelector('h3');
+      if (!titleNode) return;
+      const name = titleNode.textContent.trim();
+      if (!tiposData[name]) return;
+      card.addEventListener('click', () => openInfo(name));
+    });
+  }
+
+  closeBtn.addEventListener('click', closeInfo);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeInfo(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeInfo();
+  });
+})();
 /* =========================================================
    INTERACCIÓN DE DIAGRAMAS: modal o navegación
    ========================================================= */
